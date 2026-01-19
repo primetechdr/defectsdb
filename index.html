@@ -18,6 +18,16 @@
   --text-light: #64748b;
   --border: #e2e8f0;
   --accent: #f59e0b;
+  
+  /* Cox colors */
+  --cox-primary: #1a3a6e;
+  --cox-dark: #0f2447;
+  --cox-light: #2a4a7e;
+  
+  /* Prime colors */
+  --prime-primary: #1a1a1a;
+  --prime-dark: #000000;
+  --prime-light: #333333;
 }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
 .layout { display: flex; min-height: 100vh; }
@@ -28,6 +38,12 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+}
+.sidebar.cox-theme {
+  background: linear-gradient(180deg, var(--cox-primary) 0%, var(--cox-dark) 100%);
+}
+.sidebar.prime-theme {
+  background: linear-gradient(180deg, var(--prime-primary) 0%, var(--prime-dark) 100%);
 }
 .logo {
   padding: 24px;
@@ -47,6 +63,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   border-radius: 8px;
   font-size: 12px;
 }
+.sidebar.cox-theme .logo span { background: var(--cox-light); }
+.sidebar.prime-theme .logo span { background: var(--prime-light); }
+
 .nav { padding: 16px 12px; }
 .nav a {
   display: flex;
@@ -67,6 +86,20 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .nav a.active {
   background: var(--primary);
   box-shadow: 0 4px 12px rgba(99,102,241,0.4);
+}
+.sidebar.cox-theme .nav a:hover,
+.sidebar.cox-theme .nav a.active {
+  background: var(--cox-light);
+}
+.sidebar.cox-theme .nav a.active {
+  box-shadow: 0 4px 12px rgba(26,58,110,0.4);
+}
+.sidebar.prime-theme .nav a:hover,
+.sidebar.prime-theme .nav a.active {
+  background: var(--prime-light);
+}
+.sidebar.prime-theme .nav a.active {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 .filters {
@@ -109,6 +142,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   padding: 4px 10px;
   border-radius: 6px;
 }
+.sidebar.cox-theme .range-label { background: var(--cox-light); }
+.sidebar.prime-theme .range-label { background: var(--prime-light); }
+
 .range-slider-wrapper {
   position: relative;
   height: 40px;
@@ -131,6 +167,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   background: var(--primary);
   border-radius: 4px;
 }
+.sidebar.cox-theme .range-highlight { background: var(--cox-light); }
+.sidebar.prime-theme .range-highlight { background: var(--prime-light); }
+
 .range-input {
   position: absolute;
   top: 50%;
@@ -154,6 +193,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   border: 3px solid var(--primary);
 }
+.sidebar.cox-theme .range-input::-webkit-slider-thumb { border-color: var(--cox-primary); }
+.sidebar.prime-theme .range-input::-webkit-slider-thumb { border-color: var(--prime-primary); }
+
 .range-input::-moz-range-thumb {
   width: 22px;
   height: 22px;
@@ -208,6 +250,8 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   outline: none;
   border-color: var(--primary);
 }
+.sidebar.cox-theme .filter-group select:focus { border-color: var(--cox-light); }
+.sidebar.prime-theme .filter-group select:focus { border-color: var(--prime-light); }
 .filter-group select option { background: var(--sidebar); color: white; }
 
 .main {
@@ -217,12 +261,26 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 }
 .section { display: none; }
 .section.active { display: block; }
+
+/* Page headers with logos */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.page-header img {
+  height: 50px;
+  object-fit: contain;
+}
 .page-title {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 24px;
   color: var(--text);
 }
+.page-title.cox { color: var(--cox-primary); }
+.page-title.prime { color: var(--prime-primary); }
+
 .grid {
   display: grid;
   gap: 20px;
@@ -237,6 +295,12 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
   border: 1px solid var(--border);
 }
+.card.cox-card {
+  border-top: 4px solid var(--cox-primary);
+}
+.card.prime-card {
+  border-top: 4px solid var(--prime-primary);
+}
 .card-title {
   font-size: 14px;
   font-weight: 600;
@@ -250,7 +314,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 </head>
 <body>
 <div class="layout">
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="logo">
       <h1>📊 QC Dashboard <span>v2</span></h1>
     </div>
@@ -317,41 +381,49 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
   
   <main class="main">
     <section id="sec-general" class="section active">
-      <h2 class="page-title">📊 Estadísticas Generales</h2>
+      <div class="page-header">
+        <h2 class="page-title">📊 Estadísticas Generales</h2>
+      </div>
       <div class="grid">
         <div class="card"><div class="card-title">Defectos por Semana</div><div id="chart-gen-1" class="chart"></div></div>
         <div class="card"><div class="card-title">Top 10 Tipos de Defecto</div><div id="chart-gen-2" class="chart"></div></div>
       </div>
       <div class="divider"></div>
       <div class="grid">
-        <div class="card"><div class="card-title">Distribución por Part Name (Cox)</div><div id="chart-gen-3" class="chart"></div></div>
-        <div class="card"><div class="card-title">Distribución por Part Name (Prime)</div><div id="chart-gen-4" class="chart"></div></div>
+        <div class="card cox-card"><div class="card-title">Distribución por Part Name (Cox)</div><div id="chart-gen-3" class="chart"></div></div>
+        <div class="card prime-card"><div class="card-title">Distribución por Part Name (Prime)</div><div id="chart-gen-4" class="chart"></div></div>
       </div>
     </section>
     
     <section id="sec-cox" class="section">
-      <h2 class="page-title">📦 Cox - Análisis de Defectos</h2>
+      <div class="page-header">
+        <img src="https://www.coxandco.com/assets/images/cox-logo-1200x675.jpg" alt="Cox Logo">
+        <h2 class="page-title cox">Cox - Análisis de Defectos</h2>
+      </div>
       <div class="grid">
-        <div class="card"><div class="card-title">Defectos por Semana</div><div id="chart-cox-1" class="chart"></div></div>
-        <div class="card"><div class="card-title">Top 10 Tipos de Defecto</div><div id="chart-cox-2" class="chart"></div></div>
+        <div class="card cox-card"><div class="card-title">Defectos por Semana</div><div id="chart-cox-1" class="chart"></div></div>
+        <div class="card cox-card"><div class="card-title">Top 10 Tipos de Defecto</div><div id="chart-cox-2" class="chart"></div></div>
       </div>
       <div class="divider"></div>
       <div class="grid">
-        <div class="card"><div class="card-title">Top 10 Part Names con más Defectos</div><div id="chart-cox-3" class="chart"></div></div>
-        <div class="card"><div class="card-title">Pareto de Defectos (80%)</div><div id="chart-cox-4" class="chart chart-tall"></div></div>
+        <div class="card cox-card"><div class="card-title">Top 10 Part Names con más Defectos</div><div id="chart-cox-3" class="chart"></div></div>
+        <div class="card cox-card"><div class="card-title">Pareto de Defectos (80%)</div><div id="chart-cox-4" class="chart chart-tall"></div></div>
       </div>
     </section>
     
     <section id="sec-prime" class="section">
-      <h2 class="page-title">⭐ Prime - Análisis de Defectos</h2>
+      <div class="page-header">
+        <img src="https://cdn.prod.website-files.com/67573ea80c34ec4bd959c5e4/67573ea80c34ec4bd959c5ec_logo-primetechnology.png" alt="Prime Logo">
+        <h2 class="page-title prime">Prime - Análisis de Defectos</h2>
+      </div>
       <div class="grid">
-        <div class="card"><div class="card-title">Defectos por Semana</div><div id="chart-prime-1" class="chart"></div></div>
-        <div class="card"><div class="card-title">Top 10 Tipos de Defecto</div><div id="chart-prime-2" class="chart"></div></div>
+        <div class="card prime-card"><div class="card-title">Defectos por Semana</div><div id="chart-prime-1" class="chart"></div></div>
+        <div class="card prime-card"><div class="card-title">Top 10 Tipos de Defecto</div><div id="chart-prime-2" class="chart"></div></div>
       </div>
       <div class="divider"></div>
       <div class="grid">
-        <div class="card"><div class="card-title">Top 10 Part Names con más Defectos</div><div id="chart-prime-3" class="chart"></div></div>
-        <div class="card"><div class="card-title">Pareto de Defectos (80%)</div><div id="chart-prime-4" class="chart chart-tall"></div></div>
+        <div class="card prime-card"><div class="card-title">Top 10 Part Names con más Defectos</div><div id="chart-prime-3" class="chart"></div></div>
+        <div class="card prime-card"><div class="card-title">Pareto de Defectos (80%)</div><div id="chart-prime-4" class="chart chart-tall"></div></div>
       </div>
     </section>
   </main>
@@ -370,7 +442,19 @@ let currentSection = 'general';
 let rangeMin = 0;
 let rangeMax = ALL_WEEKS.length - 1;
 
-const colors = ['#6366f1','#8b5cf6','#a78bfa','#c4b5fd','#ddd6fe','#818cf8','#4f46e5','#4338ca','#3730a3','#312e81'];
+// Color schemes
+const colorSchemes = {
+  general: ['#6366f1','#8b5cf6','#a78bfa','#c4b5fd','#ddd6fe','#818cf8','#4f46e5','#4338ca','#3730a3','#312e81'],
+  cox: ['#1a3a6e','#2a4a7e','#3a5a8e','#4a6a9e','#5a7aae','#6a8abe','#7a9ace','#8aaade','#9abaee','#aacafe'],
+  prime: ['#1a1a1a','#2a2a2a','#3a3a3a','#4a4a4a','#5a5a5a','#6a6a6a','#7a7a7a','#8a8a8a','#9a9a9a','#aaaaaa']
+};
+
+const chartColors = {
+  general: { primary: '#6366f1', accent: '#f59e0b' },
+  cox: { primary: '#1a3a6e', accent: '#f59e0b' },
+  prime: { primary: '#1a1a1a', accent: '#f59e0b' }
+};
+
 const layoutBase = { 
   font: { family: 'Inter, sans-serif', size: 12 }, 
   paper_bgcolor: 'transparent', 
@@ -486,6 +570,13 @@ function initFilters() {
   populateSelect('f-prime-sem', FILTERS.prime.semanas, 'Todas');
 }
 
+function updateSidebarTheme(sec) {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.remove('cox-theme', 'prime-theme');
+  if (sec === 'cox') sidebar.classList.add('cox-theme');
+  if (sec === 'prime') sidebar.classList.add('prime-theme');
+}
+
 function showSection(sec) {
   currentSection = sec;
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -494,20 +585,21 @@ function showSection(sec) {
   event.target.classList.add('active');
   document.getElementById('filters-cox').style.display = sec === 'cox' ? 'block' : 'none';
   document.getElementById('filters-prime').style.display = sec === 'prime' ? 'block' : 'none';
+  updateSidebarTheme(sec);
   updateAll();
   return false;
 }
 
 function updateAll() {
   const sec = currentSection;
+  const colors = colorSchemes[sec] || colorSchemes.general;
+  const chartColor = chartColors[sec] || chartColors.general;
   
-  // Get filter values for Cox/Prime
   const pn = getVal('f-' + sec + '-name');
   const num = getVal('f-' + sec + '-num');
   const sem = getVal('f-' + sec + '-sem');
   
-  // Chart 1 - Line chart (defects by week)
-  // Affected by: Part Name, Part Number (NOT Semana específica)
+  // Chart 1 - Line chart
   const src1 = sec === 'general' ? DATA.general : DATA[sec];
   let rows1 = filterByRange(src1);
   if (sec !== 'general') {
@@ -525,19 +617,18 @@ function updateAll() {
     x: data1.map(d => d.idx), y: data1.map(d => d.qty),
     text: data1.map(d => d.qty > 0 ? String(d.qty) : ''), 
     textposition: 'top center', 
-    textfont: { size: 11, color: '#4f46e5' },
+    textfont: { size: 11, color: chartColor.primary },
     hovertemplate: '%{customdata}<br>Cantidad: %{y}<extra></extra>', 
     customdata: data1.map(d => d.label),
-    line: { color: '#6366f1', width: 3 }, 
-    marker: { color: '#6366f1', size: 10 }
+    line: { color: chartColor.primary, width: 3 }, 
+    marker: { color: chartColor.primary, size: 10 }
   }], { 
     ...layoutBase, 
     xaxis: { tickmode: 'array', tickvals: data1.map(d => d.idx), ticktext: data1.map(d => d.label), tickangle: -45, gridcolor: '#f1f5f9' }, 
     yaxis: { range: [0, maxY1 * 1.2], gridcolor: '#f1f5f9' } 
   }, { responsive: true });
 
-  // Chart 2 - Horizontal bar (top 10 defects)
-  // Affected by: Part Name, Part Number (NOT Semana específica)
+  // Chart 2 - Horizontal bar
   let rows2 = filterByRange(sec === 'general' ? DATA.general : DATA[sec]);
   if (sec !== 'general') {
     rows2 = rows2.filter(r => (pn === 'all' || r['Part Name'] === pn) && (num === 'all' || r['Part Number'] === num));
@@ -551,7 +642,7 @@ function updateAll() {
     type: 'bar', orientation: 'h', 
     x: data2.map(d => d.qty), y: data2.map(d => d.def),
     text: data2.map(d => String(d.qty)), textposition: 'auto',
-    marker: { color: '#6366f1' }
+    marker: { color: chartColor.primary }
   }], { 
     ...layoutBase, 
     yaxis: { automargin: true, categoryorder: 'total ascending' }, 
@@ -561,7 +652,6 @@ function updateAll() {
 
   // Chart 3 & 4
   if (sec === 'general') {
-    // Pie charts for Cox and Prime (all part names)
     ['cox', 'prime'].forEach((s, i) => {
       let rows3 = filterByRange(DATA[s]);
       const sums3 = {};
@@ -576,7 +666,7 @@ function updateAll() {
         hole: 0.4, 
         textinfo: 'percent', 
         textposition: 'outside',
-        marker: { colors: colors }
+        marker: { colors: colorSchemes[s] }
       }], { 
         ...layoutBase, 
         showlegend: true, 
@@ -584,8 +674,7 @@ function updateAll() {
       }, { responsive: true });
     });
   } else {
-    // Chart 3 - Pie chart for Top 10 Part Names
-    // Affected by: Semana específica ONLY (NOT Part Name, NOT Part Number)
+    // Chart 3 - Pie chart for Top 10 Part Names (affected by Semana específica only)
     let rows3 = filterByRange(DATA[sec]);
     if (sem !== 'all') {
       rows3 = rows3.filter(r => r.Semana == sem);
@@ -609,8 +698,7 @@ function updateAll() {
       legend: { orientation: 'h', y: -0.15, font: { size: 10 } } 
     }, { responsive: true });
 
-    // Chart 4 - Pareto chart (80% cutoff)
-    // Affected by: Part Name, Part Number (NOT Semana específica)
+    // Chart 4 - Pareto (80% cutoff)
     let rows4 = filterByRange(DATA[sec]);
     rows4 = rows4.filter(r => (pn === 'all' || r['Part Name'] === pn) && (num === 'all' || r['Part Number'] === num));
     const sums4 = {};
@@ -618,7 +706,6 @@ function updateAll() {
     let data4 = Object.entries(sums4).map(([k,v]) => ({ def: k, qty: v })).sort((a,b) => b.qty - a.qty);
     if (!data4.length) data4 = [{ def: 'No Data', qty: 0 }];
     
-    // Calculate cumulative and filter to ~80%
     const total4 = data4.reduce((s,d) => s + d.qty, 0);
     let cum4 = 0;
     let cutoffIdx = 0;
@@ -639,8 +726,8 @@ function updateAll() {
     });
     
     Plotly.react('chart-' + sec + '-4', [
-      { type: 'bar', x: data4.map(d => d.def), y: data4.map(d => d.qty), text: data4.map(d => String(d.qty)), textposition: 'inside', textfont: { color: 'white' }, name: 'Defectos', marker: { color: '#6366f1' } },
-      { type: 'scatter', x: data4.map(d => d.def), y: data4.map(d => d.pct), mode: 'lines+markers+text', text: data4.map(d => d.pct.toFixed(1) + '%'), textposition: 'top center', textfont: { size: 10 }, name: '% Acum.', yaxis: 'y2', line: { color: '#f59e0b', width: 3 }, marker: { color: '#f59e0b', size: 8 } }
+      { type: 'bar', x: data4.map(d => d.def), y: data4.map(d => d.qty), text: data4.map(d => String(d.qty)), textposition: 'inside', textfont: { color: 'white' }, name: 'Defectos', marker: { color: chartColor.primary } },
+      { type: 'scatter', x: data4.map(d => d.def), y: data4.map(d => d.pct), mode: 'lines+markers+text', text: data4.map(d => d.pct.toFixed(1) + '%'), textposition: 'top center', textfont: { size: 10 }, name: '% Acum.', yaxis: 'y2', line: { color: chartColor.accent, width: 3 }, marker: { color: chartColor.accent, size: 8 } }
     ], { 
       ...layoutBase, 
       xaxis: { tickangle: 45 }, 

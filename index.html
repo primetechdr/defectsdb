@@ -624,7 +624,18 @@ return;
 }
 const pr=filterByRange(PROD_DATA[company]).filter(r=>r['Part Name']===pnf);
 const defSet=new Set();
-pr.forEach(r=>{if(r.Defectos&&r.Defectos.trim())r.Defectos.split(',').map(s=>s.trim()).filter(s=>s).forEach(d=>defSet.add(d));});
+pr.forEach(r=>{
+if(r.Defectos&&r.Defectos.trim()){
+r.Defectos.split(';').forEach(part=>{
+const p=part.trim();
+if(p){
+const colonIdx=p.lastIndexOf(':');
+const defName=colonIdx>0?p.substring(0,colonIdx).trim():p;
+if(defName)defSet.add(defName);
+}
+});
+}
+});
 const defects=[...defSet].sort();
 if(defects.length===0){
 multiWrap.style.display='none';
@@ -698,7 +709,18 @@ if(wRows.length>0){
 let totalQty=0,defQty=0;
 wRows.forEach(r=>{
 totalQty+=r.TotalQty||0;
-if(r.Defectos&&r.Defectos.includes(def))defQty+=r.QTYDef||0;
+if(r.Defectos){
+r.Defectos.split(';').forEach(part=>{
+const p=part.trim();
+if(p){
+const colonIdx=p.lastIndexOf(':');
+const defName=colonIdx>0?p.substring(0,colonIdx).trim():p;
+const defQtyStr=colonIdx>0?p.substring(colonIdx+1).trim():'1';
+const dq=parseInt(defQtyStr)||1;
+if(defName===def)defQty+=dq;
+}
+});
+}
 });
 const yieldVal=totalQty>0?((totalQty-defQty)/totalQty*100):100;
 xVals.push(i);

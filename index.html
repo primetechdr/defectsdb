@@ -622,7 +622,6 @@ multiDrop.innerHTML='';
 updateDefectTrendChart(company);
 return;
 }
-// Get defects for this part name from production data
 const pr=filterByRange(PROD_DATA[company]).filter(r=>r['Part Name']===pnf);
 const defSet=new Set();
 pr.forEach(r=>{if(r.Defectos&&r.Defectos.trim())r.Defectos.split(',').map(s=>s.trim()).filter(s=>s).forEach(d=>defSet.add(d));});
@@ -633,25 +632,29 @@ multiDrop.innerHTML='';
 updateDefectTrendChart(company);
 return;
 }
-let html='<div class="multi-actions"><button onclick="selectAllDefectTrend(''+company+'',true)">Todos</button><button onclick="selectAllDefectTrend(''+company+'',false)">Ninguno</button></div>';
+let html='<div class="multi-actions"><button onclick="selectAllDefectTrend(this,true)">Todos</button><button onclick="selectAllDefectTrend(this,false)">Ninguno</button></div>';
 defects.forEach(d=>{
-const safeD=d.replace(/'/g,"\'").replace(/"/g,'&quot;');
+const safeD=d.replace(/['"]/g,'');
 const truncD=d.length>35?d.substring(0,32)+'...':d;
-html+='<label title="'+d+'"><input type="checkbox" value="'+safeD+'" onchange="onDefectTrendMultiChange(''+company+'')">'+truncD+'</label>';
+const safeTitle=d.replace(/"/g,'');
+html+='<label title="'+safeTitle+'"><input type="checkbox" value="'+safeD+'" data-company="'+company+'" onchange="onDefectTrendMultiChange()">'+truncD+'</label>';
 });
 multiDrop.innerHTML=html;
 multiWrap.style.display='inline-block';
 updateDefectTrendChart(company);
 }
 
-function selectAllDefectTrend(company,selectAll){
-const drop=document.getElementById(company+'-deftrend-multi-drop');
+function selectAllDefectTrend(btn,selectAll){
+const drop=btn.closest('.multi-select-dropdown');
 const boxes=drop.querySelectorAll('input[type=checkbox]');
 boxes.forEach(b=>b.checked=selectAll);
+const company=boxes[0]?boxes[0].dataset.company:'cox';
 updateDefectTrendChart(company);
 }
 
-function onDefectTrendMultiChange(company){
+function onDefectTrendMultiChange(){
+const boxes=event.target;
+const company=boxes.dataset.company||'cox';
 updateDefectTrendChart(company);
 }
 

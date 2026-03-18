@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAPA Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D2137;--blue:#1F4E79;--blue-lt:#2E75B6;--teal:#0E7C7B;
+  --bg:#F4F7FB;--surface:#FFFFFF;--border:#DDE3EC;
+  --text:#0D1B2A;--muted:#5C6E82;
+  --ca:#1565C0;--ca-bg:#E3F0FF;
+  --pa:#1B6E3B;--pa-bg:#E3F5EC;
+  --high:#B71C1C;--high-bg:#FDECEA;
+  --med:#7B5800;--med-bg:#FFF8E1;
+  --low:#3E4A59;--low-bg:#F0F2F5;
+  --open:#01579B;--open-bg:#E1F0FB;
+  --prog:#4A148C;--prog-bg:#F3E5F5;
+  --done:#1B5E20;--done-bg:#E8F5E9;
+  --od:#B71C1C;--od-bg:#FDECEA;
+  --r:10px;--sh:0 2px 16px rgba(13,33,55,.08);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+
+.site-header{background:var(--navy);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:66px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:38px;height:38px;background:var(--blue-lt);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#fff;letter-spacing:-.5px}
+.logo-text{color:#fff;font-size:18px;font-weight:600;letter-spacing:-.3px}
+.logo-sub{color:#7EA8CC;font-size:11px;font-weight:300;margin-top:1px}
+.header-meta{color:#7EA8CC;font-size:12px;text-align:right}
+.header-meta strong{color:#fff;display:block;font-size:13px;font-weight:500}
+
+.page{max-width:1440px;margin:0 auto;padding:32px 36px 60px}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-bottom:28px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;position:relative;overflow:hidden;box-shadow:var(--sh);transition:transform .15s,box-shadow .15s}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(13,33,55,.12)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--kpi-color,var(--blue))}
+.kpi-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.kpi-value{font-size:36px;font-weight:600;color:var(--kpi-color,var(--text));line-height:1}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
+
+.progress-wrap{margin-bottom:28px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:7px}
+.progress-bar{height:9px;background:var(--border);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#0E7C7B,var(--blue-lt));border-radius:99px}
+
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:28px;overflow:hidden}
+.panel-header{padding:13px 20px;background:var(--navy);color:#fff;font-size:13px;font-weight:500;display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;background:#F59E0B;border-radius:50%;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.alert-row{display:grid;grid-template-columns:95px 1fr 170px 110px;gap:12px;padding:11px 20px;border-bottom:1px solid var(--border);font-size:13px;align-items:center;transition:background .1s}
+.alert-row:last-child{border-bottom:none}
+.alert-row:hover{background:#F9FBFF}
+.alert-row.urgent{background:#FFF8F8;border-left:3px solid var(--high)}
+.alert-row.soon{background:#FFFDF0;border-left:3px solid #F59E0B}
+.alert-id{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--blue)}
+.alert-desc{color:var(--text)}
+.alert-owner{color:var(--muted);font-size:12px}
+.alert-due{font-weight:600;text-align:right;font-size:13px}
+.urgent .alert-due{color:var(--high)}
+.soon .alert-due{color:#B45309}
+.alert-empty{padding:24px 20px;color:var(--muted);font-size:13px;text-align:center}
+
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.filter-bar input,.filter-bar select{font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);outline:none;transition:border-color .15s}
+.filter-bar input{flex:1;min-width:200px}
+.filter-bar input:focus,.filter-bar select:focus{border-color:var(--blue-lt);box-shadow:0 0 0 3px rgba(46,117,182,.1)}
+.filter-count{font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
+
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{background:var(--navy)}
+th{padding:11px 14px;text-align:left;font-size:10px;font-weight:600;color:#9BBFD8;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;cursor:pointer;user-select:none;transition:color .1s}
+th:hover{color:#fff}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#F7FAFF}
+tr.row-closed td{opacity:.5}
+tr.overdue-row{background:#FFF5F5}
+tr.overdue-row:hover td{background:#FFF0F0}
+
+.col-id{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);white-space:nowrap}
+.col-desc{max-width:250px}
+.col-root{max-width:190px;color:var(--muted);font-size:12px}
+.col-date{white-space:nowrap;font-size:12px}
+.col-comments{max-width:170px;color:var(--muted);font-size:12px}
+.empty-row{text-align:center;padding:48px;color:var(--muted)}
+
+.badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;letter-spacing:.02em}
+.badge-ca{background:var(--ca-bg);color:var(--ca)}
+.badge-pa{background:var(--pa-bg);color:var(--pa)}
+.badge-high{background:var(--high-bg);color:var(--high)}
+.badge-med{background:var(--med-bg);color:var(--med)}
+.badge-low{background:var(--low-bg);color:var(--low)}
+.badge-open{background:var(--open-bg);color:var(--open)}
+.badge-inprog{background:var(--prog-bg);color:var(--prog)}
+.badge-closed{background:var(--done-bg);color:var(--done)}
+.badge-overdue{background:var(--od-bg);color:var(--od)}
+
+.due-tag{font-size:10px;padding:1px 7px;border-radius:10px;margin-left:4px;font-weight:600}
+.overdue-tag{background:var(--high-bg);color:var(--high)}
+.soon-tag{background:var(--med-bg);color:var(--med)}
+
+.section-title{font-size:11px;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.footer{text-align:center;font-size:11px;color:var(--muted);margin-top:44px;padding-top:20px;border-top:1px solid var(--border)}
+
+@media(max-width:768px){
+  .page{padding:16px}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .alert-row{grid-template-columns:80px 1fr}
+  .alert-owner,.alert-due{display:none}
+  table{font-size:12px}
+  th,td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-mark">CA</div>
+    <div>
+      <div class="logo-text">CAPA Matrix</div>
+      <div class="logo-sub">Corrective &amp; Preventive Action Register</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <strong>Última actualización</strong>
+    March 18, 2026
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="kpi-grid">
+    <div class="kpi" style="--kpi-color:#1F4E79">
+      <div class="kpi-label">Total CAPAs</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">CA: 1 &nbsp;·&nbsp; PA: 0</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#01579B">
+      <div class="kpi-label">Abiertas</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">Requieren seguimiento</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#4A148C">
+      <div class="kpi-label">En progreso</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-sub">Actualmente en ejecución</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#B71C1C">
+      <div class="kpi-label">Vencidas</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-sub">Fuera de plazo</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#F59E0B">
+      <div class="kpi-label">Vencen pronto</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">Próximos 14 días</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#B71C1C">
+      <div class="kpi-label">Alta prioridad</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">Sin cerrar</div>
+    </div>
+    <div class="kpi" style="--kpi-color:#1B5E20">
+      <div class="kpi-label">Cerradas</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-sub">0% del total</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Progreso de cierre</span>
+      <span>0 de 1 cerradas &nbsp;(0%)</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <p class="section-title">Próximas a vencer</p>
+  <div class="panel">
+    <div class="panel-header">
+      <div class="dot"></div>
+      CAPAs que vencen en los próximos 14 días
+    </div>
+    
+        <div class="alert-row soon">
+          <span class="alert-id">AC-001</span>
+          <span class="alert-desc">14 PCS OF 603-M5R TIMING MODULES WERE FOUND BY THE CLIENT TO HAVE EXCE…</span>
+          <span class="alert-owner">Erich Fuentes</span>
+          <span class="alert-due">En 12 días</span>
+        </div>
+  </div>
+
+  <p class="section-title">Registro completo</p>
+
+  <div class="filter-bar">
+    <input type="text" id="search" placeholder="Buscar por ID, descripción, responsable..." oninput="applyFilters()">
+    <select id="ftype" onchange="applyFilters()">
+      <option value="">Todos los tipos</option>
+      <option value="CA">CA — Correctiva</option>
+      <option value="PA">PA — Preventiva</option>
+    </select>
+    <select id="fstatus" onchange="applyFilters()">
+      <option value="">Todos los estados</option>
+      <option value="Open">Open</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Closed">Closed</option>
+      <option value="Overdue">Overdue</option>
+    </select>
+    <select id="fprio" onchange="applyFilters()">
+      <option value="">Todas las prioridades</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <span class="filter-count" id="filter-count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="capa-table">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">ID ↕</th>
+          <th onclick="sortTable(1)">Tipo ↕</th>
+          <th>Descripción</th>
+          <th>Causa raíz / Trigger</th>
+          <th onclick="sortTable(4)">Responsable ↕</th>
+          <th onclick="sortTable(5)">Prioridad ↕</th>
+          <th onclick="sortTable(6)">Fecha límite ↕</th>
+          <th onclick="sortTable(7)">Estado ↕</th>
+          <th>Fecha cierre</th>
+          <th>Comentarios</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        
+        <tr class="" data-type="CA" data-status="Open" data-priority="High">
+          <td class="col-id">AC-001</td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">14 PCS OF 603-M5R TIMING MODULES WERE FOUND BY THE CLIENT TO HAVE EXCESSIVE POTTING SOLUTION, CAUSING THE ADJUSTMENT KNOB TO STICK IN POSITION. THE KNOB REQUIRES EXCESSIVE FORCE TO TURN, MAKING POTENTIOMETER ADJUSTMENT DIFFICULT. ISSUE DETECTED DURING CUSTOMER FEEDBACK.</td>
+          <td class="col-root">1. IMPROPER POURING TECHNIQUE: POTTING SOLUTION (EPOXY) IS POURED TOO CLOSE TO THE ADJUSTMENT KNOB AREA, ALLOWING EXCESS MATERIAL TO REACH AND CONTAMINATE THE 
+COMPONENT. 
+2. LACK OF PROTECTIVE MEASURES: NO PROTECTIVE BARRIER IS APPLIED TO THE ADJUSTMENT KNOB PRIOR TO POTTING TO PREVENT EPOSY RESIDUE FROM REACHING THE COMPONENT.</td>
+          <td>Erich Fuentes</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td class="col-date">2026-03-30</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; March 18, 2026 &nbsp;·&nbsp; 1 registros
+  </div>
+
+</main>
+
+<script>
+const allRows = Array.from(document.querySelectorAll('#table-body tr'));
+const countEl = document.getElementById('filter-count');
+const TOTAL   = 1;
+
+function applyFilters() {
+  const q  = document.getElementById('search').value.toLowerCase();
+  const ft = document.getElementById('ftype').value;
+  const fs = document.getElementById('fstatus').value;
+  const fp = document.getElementById('fprio').value;
+  let shown = 0;
+  allRows.forEach(row => {
+    const ok = (!ft || row.dataset.type === ft) &&
+               (!fs || row.dataset.status === fs) &&
+               (!fp || row.dataset.priority === fp) &&
+               (!q  || row.textContent.toLowerCase().includes(q));
+    row.style.display = ok ? '' : 'none';
+    if (ok) shown++;
+  });
+  countEl.textContent = shown + ' de ' + TOTAL + ' registros';
+}
+
+let sortDir = {};
+function sortTable(col) {
+  const tbody = document.getElementById('table-body');
+  const rows  = Array.from(tbody.querySelectorAll('tr'));
+  sortDir[col] = !sortDir[col];
+  rows.sort((a, b) => {
+    const av = a.cells[col] ? a.cells[col].textContent.trim() : '';
+    const bv = b.cells[col] ? b.cells[col].textContent.trim() : '';
+    return sortDir[col] ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+
+applyFilters();
+</script>
+</body>
+</html>

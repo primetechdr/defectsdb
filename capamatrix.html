@@ -142,12 +142,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="kpi-grid">
     <div class="kpi" style="--kpi-color:#1F4E79">
       <div class="kpi-label">Total CAPAs</div>
-      <div class="kpi-value">1</div>
-      <div class="kpi-sub">CA: 1 &nbsp;·&nbsp; PA: 0</div>
+      <div class="kpi-value">2</div>
+      <div class="kpi-sub">CA: 2 &nbsp;·&nbsp; PA: 0</div>
     </div>
     <div class="kpi" style="--kpi-color:#01579B">
       <div class="kpi-label">Abiertas</div>
-      <div class="kpi-value">1</div>
+      <div class="kpi-value">2</div>
       <div class="kpi-sub">Requieren seguimiento</div>
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
@@ -162,7 +162,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#F59E0B">
       <div class="kpi-label">Vencen pronto</div>
-      <div class="kpi-value">1</div>
+      <div class="kpi-value">2</div>
       <div class="kpi-sub">Próximos 14 días</div>
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
@@ -180,7 +180,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progreso de cierre</span>
-      <span>0 de 1 cerradas &nbsp;(0%)</span>
+      <span>0 de 2 cerradas &nbsp;(0%)</span>
     </div>
     <div class="progress-bar">
       <div class="progress-fill" style="width:0%"></div>
@@ -194,6 +194,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
       CAPAs que vencen en los próximos 14 días
     </div>
     
+        <div class="alert-row soon">
+          <span class="alert-id">AC-001</span>
+          <span class="alert-desc">ACTUATORS HAVE CONSISTENTLY EXHIBITED A YIELD BELOW THE ESTABLISHED TA…</span>
+          <span class="alert-owner">Milciades Pérez</span>
+          <span class="alert-due">En 7 días</span>
+        </div>
         <div class="alert-row soon">
           <span class="alert-id">AC-006</span>
           <span class="alert-desc">14 PCS OF 603-M5R TIMING MODULES WERE FOUND BY THE CLIENT TO HAVE EXCE…</span>
@@ -259,12 +265,24 @@ COMPONENT.
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>
+        <tr class="" data-type="CA" data-status="Open" data-priority="Medium">
+          <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC001.pdf" target="_blank" title="Open CAR AC-001" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-001<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">ACTUATORS HAVE CONSISTENTLY EXHIBITED A YIELD BELOW THE ESTABLISHED TARGET OF 95% FOR A PERIOD EXCEEDING FOUR CONSECUTIVE WEEKS. ANALYSIS OF DEFECT DATA INDICATES THAT THE WINDING PROCESS IS A SIGNIFICANT CONTRIBUTOR TO THIS PERFORMANCE GAP. SPECIFICALLY, THE DEFECT CLASSIFIED AS DEFICIENT WINDING REPRESENTS APPROXIMATELY 30% OF THE TOTAL DEFECTS RECORDED DURING THIS PERIOD. THIS CONDITION REFLECTS INADEQUATE WINDING QUALITY, DIRECTLY IMPACTING PRODUCT FUNCTIONALITY AND OVERALL YIELD PERFORMANCE, AND REQUIRES IMMEDIATE CORRECTIVE ACTION.</td>
+          <td class="col-root">INSTABILITY OF THE CIRCUIT DURING THE WINDING PROCESS. SPECIFICALLY, LATERAL MOVEMENT OF THE CIRCUIT OCCURS ALONG THE WINDING CHANNEL, WHICH AFFECTS PROPER ALIGNMENT AND CONSISTENCY OF THE WINDING PATTERN, RESULTING IN A TELESCOPED ACTUATOR ROLL. ADDITIONALLY, THE CURRENT WINDING TECHNIQUE REQUIRES THE OPERATOR TO OPEN THEIR HANDS DURING THE PROCESS, WHICH REDUCES CONTROL OVER THE CIRCUIT AND FURTHER CONTRIBUTES TO DISPLACEMENT AND UNEVEN WINDING. THIS COMBINATION OF UNCONTROLLED LATERAL MOVEMENT AND INADEQUATE HANDLING TECHNIQUE RESULTS IN INCONSISTENT WINDING QUALITY AND INCREASED DEFECT OCCURRENCE.</td>
+          <td>Milciades Pérez</td>
+          <td><span class="badge badge-med">Medium</span></td>
+          <td class="col-date">2026-03-25 <span class="due-tag soon-tag">7d</span></td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <div class="footer">
-    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; March 18, 2026 &nbsp;·&nbsp; 1 registros
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; March 18, 2026 &nbsp;·&nbsp; 2 registros
   </div>
 
 </main>
@@ -272,7 +290,7 @@ COMPONENT.
 <script>
 const allRows = Array.from(document.querySelectorAll('#table-body tr'));
 const countEl = document.getElementById('filter-count');
-const TOTAL   = 1;
+const TOTAL   = 2;
 
 function applyFilters() {
   const q  = document.getElementById('search').value.toLowerCase();

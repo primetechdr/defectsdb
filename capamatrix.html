@@ -133,7 +133,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
   </div>
   <div class="header-meta">
     <strong>Última actualización</strong>
-    March 19, 2026
+    March 20, 2026
   </div>
 </header>
 
@@ -142,12 +142,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="kpi-grid">
     <div class="kpi" style="--kpi-color:#1F4E79">
       <div class="kpi-label">Total CAPAs</div>
-      <div class="kpi-value">2</div>
-      <div class="kpi-sub">CA: 2 &nbsp;·&nbsp; PA: 0</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-sub">CA: 3 &nbsp;·&nbsp; PA: 0</div>
     </div>
     <div class="kpi" style="--kpi-color:#01579B">
       <div class="kpi-label">Abiertas</div>
-      <div class="kpi-value">2</div>
+      <div class="kpi-value">3</div>
       <div class="kpi-sub">Requieren seguimiento</div>
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
@@ -180,7 +180,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progreso de cierre</span>
-      <span>0 de 2 cerradas &nbsp;(0%)</span>
+      <span>0 de 3 cerradas &nbsp;(0%)</span>
     </div>
     <div class="progress-bar">
       <div class="progress-fill" style="width:0%"></div>
@@ -198,13 +198,13 @@ tr.overdue-row:hover td{background:#FFF0F0}
           <span class="alert-id">AC-001</span>
           <span class="alert-desc">ACTUATORS HAVE CONSISTENTLY EXHIBITED A YIELD BELOW THE ESTABLISHED TA…</span>
           <span class="alert-owner">Milciades Pérez</span>
-          <span class="alert-due">En 6 días</span>
+          <span class="alert-due">En 5 días</span>
         </div>
         <div class="alert-row soon">
           <span class="alert-id">AC-006</span>
           <span class="alert-desc">14 PCS OF 603-M5R TIMING MODULES WERE FOUND BY THE CLIENT TO HAVE EXCE…</span>
           <span class="alert-owner">Erich Fuentes</span>
-          <span class="alert-due">En 11 días</span>
+          <span class="alert-due">En 10 días</span>
         </div>
   </div>
 
@@ -272,7 +272,22 @@ COMPONENT.
           <td class="col-root">INSTABILITY OF THE CIRCUIT DURING THE WINDING PROCESS. SPECIFICALLY, LATERAL MOVEMENT OF THE CIRCUIT OCCURS ALONG THE WINDING CHANNEL, WHICH AFFECTS PROPER ALIGNMENT AND CONSISTENCY OF THE WINDING PATTERN, RESULTING IN A TELESCOPED ACTUATOR ROLL. ADDITIONALLY, THE CURRENT WINDING TECHNIQUE REQUIRES THE OPERATOR TO OPEN THEIR HANDS DURING THE PROCESS, WHICH REDUCES CONTROL OVER THE CIRCUIT AND FURTHER CONTRIBUTES TO DISPLACEMENT AND UNEVEN WINDING. THIS COMBINATION OF UNCONTROLLED LATERAL MOVEMENT AND INADEQUATE HANDLING TECHNIQUE RESULTS IN INCONSISTENT WINDING QUALITY AND INCREASED DEFECT OCCURRENCE.</td>
           <td>Milciades Pérez</td>
           <td><span class="badge badge-med">Medium</span></td>
-          <td class="col-date">2026-03-25 <span class="due-tag soon-tag">6d</span></td>
+          <td class="col-date">2026-03-25 <span class="due-tag soon-tag">5d</span></td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
+        <tr class="" data-type="CA" data-status="Open" data-priority="Medium">
+          <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC002.pdf" target="_blank" title="Open CAR AC-002" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-002<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">II AND SHURITE METERS ARE CURRENTLY EXHIBITING CALIBRATION DEFICIENCIES, WHICH ARE DIRECTLY IMPACTING THE ASSEMBLY PROCESS YIELD. OVER THE PAST EIGHT (8) WEEKS, YIELD PERFORMANCE HAS REMAINED CONSISTENTLY BELOW THE ESTABLISHED TARGET FOR BOTH II AND SHURITE PRODUCT LINES.</td>
+          <td class="col-root">1. LACK OF STANDARDIZED INSPECTION CRITERIA.
+2. MEASUREMENT SYSTEM INCONSISTENCY (QC VS PRODUCTION EQUIPMENT).
+3. POOR VISUAL ALIGNMENT CONDITIONS DURING CALIBRATION/INSPECTION.
+4. LACK OF DEFINED VISUAL AIDS OR FIXTURES FOR CALIBRATION VALIDATION.</td>
+          <td>JOSE MATEO</td>
+          <td><span class="badge badge-med">Medium</span></td>
+          <td class="col-date">2026-04-20</td>
           <td><span class="badge badge-open">Open</span></td>
           <td class="col-date">—</td>
           <td class="col-comments"></td>
@@ -282,7 +297,7 @@ COMPONENT.
   </div>
 
   <div class="footer">
-    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; March 19, 2026 &nbsp;·&nbsp; 2 registros
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; March 20, 2026 &nbsp;·&nbsp; 3 registros
   </div>
 
 </main>
@@ -290,7 +305,7 @@ COMPONENT.
 <script>
 const allRows = Array.from(document.querySelectorAll('#table-body tr'));
 const countEl = document.getElementById('filter-count');
-const TOTAL   = 2;
+const TOTAL   = 3;
 
 function applyFilters() {
   const q  = document.getElementById('search').value.toLowerCase();

@@ -154,7 +154,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
       <div class="kpi-label">En progreso</div>
-      <div class="kpi-value">2</div>
+      <div class="kpi-value">1</div>
       <div class="kpi-sub">Actualmente en ejecución</div>
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
@@ -164,7 +164,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#F59E0B">
       <div class="kpi-label">Vencen pronto</div>
-      <div class="kpi-value">1</div>
+      <div class="kpi-value">0</div>
       <div class="kpi-sub">Próximos 14 días</div>
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
@@ -195,13 +195,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
       <div class="dot"></div>
       CAPAs que vencen en los próximos 14 días
     </div>
-    
-        <div class="alert-row urgent">
-          <span class="alert-id">AC-001</span>
-          <span class="alert-desc">ACTUATORS HAVE CONSISTENTLY EXHIBITED A YIELD BELOW THE ESTABLISHED TA…</span>
-          <span class="alert-owner">Milciades Pérez</span>
-          <span class="alert-due">Mañana</span>
-        </div>
+    <div class="alert-empty">No hay CAPAs próximas a vencer en los próximos 14 días.</div>
   </div>
 
   <p class="section-title">Registro completo</p>
@@ -262,7 +256,7 @@ COMPONENT.
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>
-        <tr class="" data-type="CA" data-status="In Progress" data-priority="Medium">
+        <tr class="row-closed" data-type="CA" data-status="Pending Verification of Effectiveness" data-priority="Medium">
           <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC001.pdf" target="_blank" title="Open CAR AC-001" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-001<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
           <td><span class="badge badge-ca">CA</span></td>
           <td class="col-desc">ACTUATORS HAVE CONSISTENTLY EXHIBITED A YIELD BELOW THE ESTABLISHED TARGET OF 95% FOR A PERIOD EXCEEDING FOUR CONSECUTIVE WEEKS. ANALYSIS OF DEFECT DATA INDICATES THAT THE WINDING PROCESS IS A SIGNIFICANT CONTRIBUTOR TO THIS PERFORMANCE GAP. SPECIFICALLY, THE DEFECT CLASSIFIED AS DEFICIENT WINDING REPRESENTS APPROXIMATELY 30% OF THE TOTAL DEFECTS RECORDED DURING THIS PERIOD. THIS CONDITION REFLECTS INADEQUATE WINDING QUALITY, DIRECTLY IMPACTING PRODUCT FUNCTIONALITY AND OVERALL YIELD PERFORMANCE, AND REQUIRES IMMEDIATE CORRECTIVE ACTION.</td>
@@ -270,7 +264,7 @@ COMPONENT.
           <td>Milciades Pérez</td>
           <td><span class="badge badge-med">Medium</span></td>
           <td class="col-date">2026-03-25 <span class="due-tag soon-tag">1d</span></td>
-          <td><span class="badge badge-inprog">In Progress</span></td>
+          <td><span class="badge badge-pending-verif">Pending Verification of Effectiveness</span></td>
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>

@@ -144,12 +144,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="kpi-grid">
     <div class="kpi" style="--kpi-color:#1F4E79">
       <div class="kpi-label">Total CAPAs</div>
-      <div class="kpi-value">6</div>
-      <div class="kpi-sub">CA: 6 &nbsp;·&nbsp; PA: 0</div>
+      <div class="kpi-value">7</div>
+      <div class="kpi-sub">CA: 7 &nbsp;·&nbsp; PA: 0</div>
     </div>
     <div class="kpi" style="--kpi-color:#01579B">
       <div class="kpi-label">Abiertas</div>
-      <div class="kpi-value">4</div>
+      <div class="kpi-value">5</div>
       <div class="kpi-sub">Requieren seguimiento</div>
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
@@ -164,28 +164,28 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#F59E0B">
       <div class="kpi-label">Vencen pronto</div>
-      <div class="kpi-value">2</div>
+      <div class="kpi-value">3</div>
       <div class="kpi-sub">Próximos 14 días</div>
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
       <div class="kpi-label">Alta prioridad</div>
-      <div class="kpi-value">2</div>
+      <div class="kpi-value">3</div>
       <div class="kpi-sub">Sin cerrar</div>
     </div>
     <div class="kpi" style="--kpi-color:#1B5E20">
       <div class="kpi-label">Cerradas</div>
       <div class="kpi-value">2</div>
-      <div class="kpi-sub">33% del total</div>
+      <div class="kpi-sub">29% del total</div>
     </div>
   </div>
 
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progreso de cierre</span>
-      <span>2 de 6 cerradas &nbsp;(33%)</span>
+      <span>2 de 7 cerradas &nbsp;(29%)</span>
     </div>
     <div class="progress-bar">
-      <div class="progress-fill" style="width:33%"></div>
+      <div class="progress-fill" style="width:29%"></div>
     </div>
   </div>
 
@@ -205,6 +205,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
         <div class="alert-row soon">
           <span class="alert-id">AC-007</span>
           <span class="alert-desc">THE 3495-203-021 INNERLINE HEATER FITTING ASSEMBLY EXHIBITED A SIMPLIF…</span>
+          <span class="alert-owner">ERICH FUENTES</span>
+          <span class="alert-due">En 12 días</span>
+        </div>
+        <div class="alert-row soon">
+          <span class="alert-id">AC-009</span>
+          <span class="alert-desc">THE 6571-203 CABLE ASSEMBLY EXHIBITED A SIMPLIFIED YIELD BELOW THE EST…</span>
           <span class="alert-owner">ERICH FUENTES</span>
           <span class="alert-due">En 12 días</span>
         </div>
@@ -339,12 +345,26 @@ CONSIDER THIS CONDITION TO BE A DEFECT.</td>
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>
+        <tr class="" data-type="CA" data-status="Open" data-priority="High">
+          <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC009.pdf" target="_blank" title="Open CAR AC-009" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-009<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">THE 6571-203 CABLE ASSEMBLY EXHIBITED A SIMPLIFIED YIELD BELOW THE ESTABLISHED PERFORMANCE CRITERION OF 95% DURING THE EVALUATED WEEK. ACCORDING TO THE ESTABLISHED PERFORMANCE CRITERIA, A SIMPLIFIED YIELD BELOW 95% FOR ONE WEEK REQUIRES THE OPENING OF A CORRECTIVE 
+ACTION. THIS PERFORMANCE INDICATES AN UNACCEPTABLE LEVEL OF PROCESS LOSSES AND REQUIRES ANALYSIS OF THE DEFECTS AND PROCESS CONDITIONS CONTRIBUTING TO THE REDUCED YIELD. PENDING ROOT CAUSE ANALYSIS TO FURTHER IMPROVE PRODUCT YIELD. (9/7/26)</td>
+          <td class="col-root">A RECESSED PIN WAS OBSERVED ON CONNECTOR D3899/20WD19PN (J3). THE OCCURRENCE OF A RECESSED PIN IS CONSIDERED A NORMAL PROCESS VARIATION AND IS AN EXPECTED CONDITION THAT MAY OCCUR DURING THE ASSEMBLY PROCESS. HOWEVER, THE CONDITION WAS NOT IDENTIFIED PRIOR TO THE ASSEMBLY BEING SENT TO QC, RESULTING IN UNNECESSARY MOVEMENT AND PROCESSING TIME 
+THROUGH THE QC INSPECTION FLOW. WHEN THE CONDITION IS IDENTIFIED BY QC, ADDITIONAL TIME IS REQUIRED FOR THE ASSEMBLY TO REMAIN IN THE QC QUEUE, UNDERGO INSPECTION, BE RETURNED TO THE OPERATOR FOR CORRECTION, AND SUBSEQUENTLY RE-ENTER THE QC QUEUE FOR RE-INSPECTION. THIS CREATES AVOIDABLE INSPECTION AND HANDLING TIME AND REDUCES OVERALL PROCESS EFFICIENCY. (9/8/26)</td>
+          <td>ERICH FUENTES</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td class="col-date">2026-09-21</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <div class="footer">
-    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 09, 2026 &nbsp;·&nbsp; 6 registros
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 09, 2026 &nbsp;·&nbsp; 7 registros
   </div>
 
 </main>
@@ -352,7 +372,7 @@ CONSIDER THIS CONDITION TO BE A DEFECT.</td>
 <script>
 const allRows = Array.from(document.querySelectorAll('#table-body tr'));
 const countEl = document.getElementById('filter-count');
-const TOTAL   = 6;
+const TOTAL   = 7;
 
 function applyFilters() {
   const q  = document.getElementById('search').value.toLowerCase();

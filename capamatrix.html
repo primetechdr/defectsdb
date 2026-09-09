@@ -144,12 +144,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="kpi-grid">
     <div class="kpi" style="--kpi-color:#1F4E79">
       <div class="kpi-label">Total CAPAs</div>
-      <div class="kpi-value">5</div>
-      <div class="kpi-sub">CA: 5 &nbsp;·&nbsp; PA: 0</div>
+      <div class="kpi-value">6</div>
+      <div class="kpi-sub">CA: 6 &nbsp;·&nbsp; PA: 0</div>
     </div>
     <div class="kpi" style="--kpi-color:#01579B">
       <div class="kpi-label">Abiertas</div>
-      <div class="kpi-value">3</div>
+      <div class="kpi-value">4</div>
       <div class="kpi-sub">Requieren seguimiento</div>
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
@@ -164,28 +164,28 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#F59E0B">
       <div class="kpi-label">Vencen pronto</div>
-      <div class="kpi-value">0</div>
+      <div class="kpi-value">1</div>
       <div class="kpi-sub">Próximos 14 días</div>
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
       <div class="kpi-label">Alta prioridad</div>
-      <div class="kpi-value">1</div>
+      <div class="kpi-value">2</div>
       <div class="kpi-sub">Sin cerrar</div>
     </div>
     <div class="kpi" style="--kpi-color:#1B5E20">
       <div class="kpi-label">Cerradas</div>
       <div class="kpi-value">2</div>
-      <div class="kpi-sub">40% del total</div>
+      <div class="kpi-sub">33% del total</div>
     </div>
   </div>
 
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progreso de cierre</span>
-      <span>2 de 5 cerradas &nbsp;(40%)</span>
+      <span>2 de 6 cerradas &nbsp;(33%)</span>
     </div>
     <div class="progress-bar">
-      <div class="progress-fill" style="width:40%"></div>
+      <div class="progress-fill" style="width:33%"></div>
     </div>
   </div>
 
@@ -195,7 +195,13 @@ tr.overdue-row:hover td{background:#FFF0F0}
       <div class="dot"></div>
       CAPAs que vencen en los próximos 14 días
     </div>
-    <div class="alert-empty">No hay CAPAs próximas a vencer en los próximos 14 días.</div>
+    
+        <div class="alert-row soon">
+          <span class="alert-id">AC-007</span>
+          <span class="alert-desc">THE 3495-203-021 INNERLINE HEATER FITTING ASSEMBLY EXHIBITED A SIMPLIF…</span>
+          <span class="alert-owner">ERICH FUENTES</span>
+          <span class="alert-due">En 12 días</span>
+        </div>
   </div>
 
   <p class="section-title">Registro completo</p>
@@ -315,12 +321,24 @@ CONSIDER THIS CONDITION TO BE A DEFECT.</td>
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>
+        <tr class="" data-type="CA" data-status="Open" data-priority="High">
+          <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC007.pdf" target="_blank" title="Open CAR AC-007" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-007<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">THE 3495-203-021 INNERLINE HEATER FITTING ASSEMBLY EXHIBITED A SIMPLIFIED YIELD BELOW THE ESTABLISHED PERFORMANCE CRITERION OF 95% DURING THE EVALUATED WEEK. ACCORDING TO THE ESTABLISHED PERFORMANCE CRITERIA, A SIMPLIFIED YIELD BELOW 95% FOR ONE WEEK REQUIRES THE OPENING OF A CORRECTIVE ACTION. THIS PERFORMANCE INDICATES AN UNACCEPTABLE LEVEL OF PROCESS LOSSES AND REQUIRES ANALYSIS OF THE DEFECTS AND PROCESS CONDITIONS CONTRIBUTING TO THE REDUCED YIELD. PENDING ROOT CAUSE ANALYSIS TO FURTHER IMPROVE PRODUCT YIELD. (9/7/26)</td>
+          <td class="col-root">THE ROOT CAUSE WAS THE USE OF GLOVES THAT ARE NOT SUITABLE FOR FOD-SENSITIVE ASSEMBLY OPERATIONS. THE GLOVES SHED PARTICLES DURING HANDLING OF THE FITTING, PARTICULARLY WHILE THE FITTING WAS BEING HEATED, ALLOWING FOD PARTICLES TO ENTER THE TUBING. ALTHOUGH THE POTENTIAL SOURCE HAD BEEN PREVIOUSLY IDENTIFIED AND DISCUSSED, THE APPROPRIATE LOW-FOD GLOVES HAD NOT YET BEEN IMPLEMENTED, ALLOWING THE CONDITION TO PERSIST.</td>
+          <td>ERICH FUENTES</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td class="col-date">2026-09-21</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <div class="footer">
-    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 09, 2026 &nbsp;·&nbsp; 5 registros
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 09, 2026 &nbsp;·&nbsp; 6 registros
   </div>
 
 </main>
@@ -328,7 +346,7 @@ CONSIDER THIS CONDITION TO BE A DEFECT.</td>
 <script>
 const allRows = Array.from(document.querySelectorAll('#table-body tr'));
 const countEl = document.getElementById('filter-count');
-const TOTAL   = 5;
+const TOTAL   = 6;
 
 function applyFilters() {
   const q  = document.getElementById('search').value.toLowerCase();

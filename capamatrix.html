@@ -135,7 +135,7 @@ tr.overdue-row:hover td{background:#FFF0F0}
   </div>
   <div class="header-meta">
     <strong>Última actualización</strong>
-    May 13, 2026
+    September 09, 2026
   </div>
 </header>
 
@@ -144,12 +144,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="kpi-grid">
     <div class="kpi" style="--kpi-color:#1F4E79">
       <div class="kpi-label">Total CAPAs</div>
-      <div class="kpi-value">4</div>
-      <div class="kpi-sub">CA: 4 &nbsp;·&nbsp; PA: 0</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-sub">CA: 5 &nbsp;·&nbsp; PA: 0</div>
     </div>
     <div class="kpi" style="--kpi-color:#01579B">
       <div class="kpi-label">Abiertas</div>
-      <div class="kpi-value">2</div>
+      <div class="kpi-value">3</div>
       <div class="kpi-sub">Requieren seguimiento</div>
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
@@ -169,23 +169,23 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
       <div class="kpi-label">Alta prioridad</div>
-      <div class="kpi-value">0</div>
+      <div class="kpi-value">1</div>
       <div class="kpi-sub">Sin cerrar</div>
     </div>
     <div class="kpi" style="--kpi-color:#1B5E20">
       <div class="kpi-label">Cerradas</div>
       <div class="kpi-value">2</div>
-      <div class="kpi-sub">50% del total</div>
+      <div class="kpi-sub">40% del total</div>
     </div>
   </div>
 
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progreso de cierre</span>
-      <span>2 de 4 cerradas &nbsp;(50%)</span>
+      <span>2 de 5 cerradas &nbsp;(40%)</span>
     </div>
     <div class="progress-bar">
-      <div class="progress-fill" style="width:50%"></div>
+      <div class="progress-fill" style="width:40%"></div>
     </div>
   </div>
 
@@ -298,12 +298,29 @@ COMPONENT.
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>
+        <tr class="" data-type="CA" data-status="Open" data-priority="High">
+          <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC005.pdf" target="_blank" title="Open CAR AC-005" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-005<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">THE SENSOR PRODUCT FAMILY EXHIBITED A SIMPLIFIED YIELD BELOW THE ESTABLISHED PERFORMANCE CRITERION OF 90% DURING THE EVALUATED WEEK. ACCORDING TO THE ESTABLISHED PERFORMANCE CRITERIA, A SIMPLIFIED YIELD BELOW 90% FOR ONE WEEK REQUIRES THE OPENING OF A CORRECTIVE ACTION. THIS PERFORMANCE INDICATES AN UNACCEPTABLE LEVEL OF PROCESS LOSSES AND REQUIRES ANALYSIS OF THE DEFECTS AND PROCESS CONDITIONS CONTRIBUTING TO THE REDUCED YIELD. PENDING ROOT CAUSE ANALYSIS TO FURTHER IMPROVE PRODUCT YIELD. (9/7/26)</td>
+          <td class="col-root">A LACK OF KNOWLEDGE OF THE STANDARDS DEFINED IN MP3515-24 LED THE OPERATOR TO USE A NON
+OPTIMAL METHOD FOR RTV APPLICATION. IN SOME INSTANCES, INSUFFICIENT RTV WAS APPLIED TO 
+COVER THE ENTIRE SURFACE AREA SPECIFIED IN THE MP AND ENGINEERING DRAWING. 
+SIMILARLY, A LACK OF UNDERSTANDING WITHIN QC REGARDING COX'S EXPECTATIONS FOR THIS PART 
+NUMBER (PN) RESULTED IN PARTS BEING REJECTED DUE TO EXCESS RTV, EVEN THOUGH COX DOES NOT 
+CONSIDER THIS CONDITION TO BE A DEFECT.</td>
+          <td>ERICH FUENTES</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td class="col-date">9/21/26</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <div class="footer">
-    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; May 13, 2026 &nbsp;·&nbsp; 4 registros
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 09, 2026 &nbsp;·&nbsp; 5 registros
   </div>
 
 </main>
@@ -311,7 +328,7 @@ COMPONENT.
 <script>
 const allRows = Array.from(document.querySelectorAll('#table-body tr'));
 const countEl = document.getElementById('filter-count');
-const TOTAL   = 4;
+const TOTAL   = 5;
 
 function applyFilters() {
   const q  = document.getElementById('search').value.toLowerCase();

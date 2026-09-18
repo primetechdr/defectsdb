@@ -144,12 +144,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
   <div class="kpi-grid">
     <div class="kpi" style="--kpi-color:#1F4E79">
       <div class="kpi-label">Total CAPAs</div>
-      <div class="kpi-value">8</div>
-      <div class="kpi-sub">CA: 8 &nbsp;·&nbsp; PA: 0</div>
+      <div class="kpi-value">9</div>
+      <div class="kpi-sub">CA: 9 &nbsp;·&nbsp; PA: 0</div>
     </div>
     <div class="kpi" style="--kpi-color:#01579B">
       <div class="kpi-label">Abiertas</div>
-      <div class="kpi-value">6</div>
+      <div class="kpi-value">7</div>
       <div class="kpi-sub">Requieren seguimiento</div>
     </div>
     <div class="kpi" style="--kpi-color:#4A148C">
@@ -164,28 +164,28 @@ tr.overdue-row:hover td{background:#FFF0F0}
     </div>
     <div class="kpi" style="--kpi-color:#F59E0B">
       <div class="kpi-label">Vencen pronto</div>
-      <div class="kpi-value">4</div>
+      <div class="kpi-value">5</div>
       <div class="kpi-sub">Próximos 14 días</div>
     </div>
     <div class="kpi" style="--kpi-color:#B71C1C">
       <div class="kpi-label">Alta prioridad</div>
-      <div class="kpi-value">4</div>
+      <div class="kpi-value">5</div>
       <div class="kpi-sub">Sin cerrar</div>
     </div>
     <div class="kpi" style="--kpi-color:#1B5E20">
       <div class="kpi-label">Cerradas</div>
       <div class="kpi-value">2</div>
-      <div class="kpi-sub">25% del total</div>
+      <div class="kpi-sub">22% del total</div>
     </div>
   </div>
 
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progreso de cierre</span>
-      <span>2 de 8 cerradas &nbsp;(25%)</span>
+      <span>2 de 9 cerradas &nbsp;(22%)</span>
     </div>
     <div class="progress-bar">
-      <div class="progress-fill" style="width:25%"></div>
+      <div class="progress-fill" style="width:22%"></div>
     </div>
   </div>
 
@@ -217,6 +217,12 @@ tr.overdue-row:hover td{background:#FFF0F0}
         <div class="alert-row soon">
           <span class="alert-id">AC-008</span>
           <span class="alert-desc">BOTH THE 6536-01 AND 6536-02 HARNESS ASSEMBLIES EXHIBITED A SIMPLIFIED…</span>
+          <span class="alert-owner">ERICH FUENTES</span>
+          <span class="alert-due">En 10 días</span>
+        </div>
+        <div class="alert-row soon">
+          <span class="alert-id">AC-010</span>
+          <span class="alert-desc">THE PRINTED CIRCUIT BOARDS PRODUCT FAMILY EXHIBITED A SIMPLIFIED YIELD…</span>
           <span class="alert-owner">ERICH FUENTES</span>
           <span class="alert-due">En 10 días</span>
         </div>
@@ -377,12 +383,24 @@ THROUGH THE QC INSPECTION FLOW. WHEN THE CONDITION IS IDENTIFIED BY QC, ADDITION
           <td class="col-date">—</td>
           <td class="col-comments"></td>
         </tr>
+        <tr class="" data-type="CA" data-status="Open" data-priority="High">
+          <td class="col-id"><a href="https://primetechnology.sharepoint.com/sites/FotosDefectos/Shared%20Documents/AC010.pdf" target="_blank" title="Open CAR AC-010" style="color:var(--blue);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px">AC-010<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:.5;flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></td>
+          <td><span class="badge badge-ca">CA</span></td>
+          <td class="col-desc">THE PRINTED CIRCUIT BOARDS PRODUCT FAMILY EXHIBITED A SIMPLIFIED YIELD BELOW THE ESTABLISHED PERFORMANCE CRITERION OF 95% DURING TWO CONSECUTIVE EVALUATED WEEKS (WEEKS 29 AND 37). ACCORDING TO THE ESTABLISHED PERFORMANCE CRITERIA, A SIMPLIFIED YIELD BELOW 95% FOR TWO CONSECUTIVE WEEKS REQUIRES THE OPENING OF A CORRECTIVE ACTION. THIS PERFORMANCE INDICATES AN UNACCEPTABLE LEVEL OF PROCESS LOSSES AND REQUIRES AN ANALYSIS OF THE DEFECTS AND PROCESS CONDITIONS CONTRIBUTING TO THE REDUCED YIELD. ROOT CAUSE ANALYSIS AND CORRECTIVE ACTIONS ARE PENDING TO FURTHER IMPROVE PRODUCT YIELD. (9/14/26)</td>
+          <td class="col-root">THE INVESTIGATION DETERMINED THAT THE OPERATORS HAVE THE REQUIRED KNOWLEDGE AND SKILLS TO PERFORM THE SOLDERING PROCESS CORRECTLY. THE RECURRENT DEFECTS ARE NOT RELATED TO THE SOLDERING METHOD ITSELF, BUT TO INSUFFICIENT ATTENTION TO PRODUCT-SPECIFIC DETAILS DURING PCB ASSEMBLY. SPECIFICALLY, THE CURRENT PROCESS DOES NOT PROVIDE SUFFICIENT EMPHASIS ON VERIFYING THAT COMPONENTS ARE NOT DAMAGED, THAT COMPONENT DIMENSIONS MEET CUSTOMER REQUIREMENTS, THAT ALL REQUIRED COMPONENTS ARE PRESENT, AND THAT COMPONENT LOCATION AND ORIENTATION MATCH THE APPLICABLE SCHEMATIC AND PRODUCT REQUIREMENTS.</td>
+          <td>ERICH FUENTES</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td class="col-date">2026-09-28</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td class="col-date">—</td>
+          <td class="col-comments"></td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <div class="footer">
-    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 18, 2026 &nbsp;·&nbsp; 8 registros
+    Generado automáticamente por CAPA Matrix &nbsp;·&nbsp; September 18, 2026 &nbsp;·&nbsp; 9 registros
   </div>
 
 </main>
@@ -390,7 +408,7 @@ THROUGH THE QC INSPECTION FLOW. WHEN THE CONDITION IS IDENTIFIED BY QC, ADDITION
 <script>
 const allRows = Array.from(document.querySelectorAll('#table-body tr'));
 const countEl = document.getElementById('filter-count');
-const TOTAL   = 8;
+const TOTAL   = 9;
 
 function applyFilters() {
   const q  = document.getElementById('search').value.toLowerCase();

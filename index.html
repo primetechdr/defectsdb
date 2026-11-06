@@ -258,7 +258,7 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 .cc-note{font-size:11px;color:var(--text-light);line-height:1.5;margin:0 0 8px}
 .cc-legend summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--text);list-style:none;display:flex;align-items:center;gap:8px}
 .cc-legend summary::-webkit-details-marker{display:none}
-.cc-legend summary::after{content:'BE';margin-left:auto;color:var(--text-light);font-size:12px}
+.cc-legend summary::after{content:'\25BE';margin-left:auto;color:var(--text-light);font-size:12px}
 .cc-legend[open] summary{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 .cc-legend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px}
 .cc-legend h4{font-size:12px;font-weight:700;color:var(--text);margin:0 0 6px}
@@ -271,6 +271,43 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 .cc-dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:6px}
 .cc-dia{display:inline-block;width:9px;height:9px;transform:rotate(45deg);vertical-align:middle;margin-right:7px}
 @media(max-width:900px){.cc-legend-grid{grid-template-columns:1fr}}
+.cc-nav{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 16px}
+.cc-nav button{border:1px solid var(--border);background:var(--card);color:var(--text);font-size:11px;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;transition:var(--transition)}
+.cc-nav button:hover{border-color:var(--primary);color:var(--primary)}
+.cc-branch{--rail:var(--cox-primary);position:relative;grid-column:span 2;margin:0 0 8px 30px;padding:0 0 4px 28px;border-left:3px solid var(--rail);border-bottom-left-radius:16px}
+.cc-branch.prime{--rail:var(--prime-primary)}
+.cc-branch::before{content:'';position:absolute;left:-3px;top:-16px;height:16px;border-left:3px solid var(--rail)}
+.cc-branch>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-left:4px solid var(--rail);border-radius:12px;box-shadow:var(--shadow-md);position:relative}
+.cc-branch>summary::-webkit-details-marker{display:none}
+.cc-branch>summary::before{content:'';position:absolute;left:-31px;top:50%;width:27px;border-top:3px solid var(--rail)}
+.cc-branch>summary::after{content:'\25BE';margin-left:auto;color:var(--text-light);font-size:12px}
+.cc-branch-title{font-size:13px;font-weight:700;color:var(--text)}
+.cc-branch-sub{font-size:10px;color:var(--text-light)}
+.cc-counts{display:flex;gap:6px;flex-wrap:wrap}
+.cc-chip{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.cc-chip.att{background:rgba(239,68,68,0.12);color:#b91c1c}
+.cc-chip.prev{background:rgba(245,158,11,0.15);color:#b45309}
+.cc-chip.ok{background:rgba(16,185,129,0.13);color:#047857}
+.cc-chip.low{background:rgba(100,116,139,0.13);color:#475569}
+.cc-filter-btn{border:1px solid var(--border);background:var(--bg);font-size:10px;font-weight:600;padding:4px 10px;border-radius:6px;cursor:pointer;color:var(--text)}
+.cc-filter-btn.on{background:#ef4444;border-color:#ef4444;color:#fff}
+.cc-fam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;padding:14px 0 6px}
+.cc-fam{--st:#94a3b8;background:var(--card);border:1px solid var(--border);border-left:4px solid var(--st);border-radius:10px;padding:10px 10px 4px;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm)}
+.cc-fam:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px)}
+.cc-fam.st-att{--st:#ef4444;background:linear-gradient(180deg,rgba(239,68,68,0.04),transparent 55px),var(--card)}
+.cc-fam.st-prev{--st:#f59e0b}
+.cc-fam.st-ok{--st:#10b981}
+.cc-fam.sel{outline:2px solid var(--rail,var(--primary));outline-offset:1px}
+.cc-fam-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cc-fam-name{font-size:12px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-fam-meta{font-size:10px;color:var(--text-light);margin:2px 0 0}
+.cc-fam-plot{height:150px;width:100%}
+.cc-fam-empty{font-size:11px;color:var(--text-light);padding:40px 0;text-align:center}
+.cc-detail{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--rail);border-radius:12px;padding:14px 16px;margin-top:14px;box-shadow:var(--shadow-md)}
+.cc-detail-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cc-detail-title{font-size:14px;font-weight:700;color:var(--text);flex:1}
+.cc-close{border:none;background:var(--bg);width:26px;height:26px;border-radius:50%;cursor:pointer;color:var(--text-light);font-size:13px}
+.cc-close:hover{background:var(--border)}
 .critical-warn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#ef4444;color:#fff;border-radius:50%;font-size:11px;font-weight:700;cursor:help;margin-left:4px;flex-shrink:0}
 .critical-warn:hover .critical-tooltip{display:block}
 .critical-tooltip{display:none;position:fixed;width:280px;padding:10px 12px;background:#1e293b;color:#fff;font-size:10px;font-weight:400;line-height:1.5;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:9999;text-align:left;pointer-events:none}
@@ -536,10 +573,13 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 <!-- Control Charts Section -->
 <section id="sec-control-charts" class="section">
 <div class="page-header"><h2 class="page-title">&#128201; Control Charts</h2><button class="export-btn" onclick="exportSection('sec-control-charts')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Exportar</button></div>
+<div class="cc-nav"><button onclick="ccGo('cc-card-cox')">Cox</button><button onclick="ccGo('cc-branch-cox')">&#8627; Familias Cox</button><button onclick="ccGo('cc-card-prime')">Prime</button><button onclick="ccGo('cc-branch-prime')">&#8627; Familias Prime</button><button onclick="ccGo('cc-legend')">&#128216; Leyenda</button></div>
 <div class="grid">
-<div class="card cox-card full-width"><div class="card-header"><div class="card-title">Yield Semanal - Cox &middot; Gr&aacute;fico P</div></div><div class="cc-summary" id="cc-summary-cox"></div><div id="chart-cc-yield-cox" class="chart-tall"></div></div>
-<div class="card prime-card full-width"><div class="card-header"><div class="card-title">Yield Semanal - Prime &middot; Gr&aacute;fico P</div></div><div class="cc-summary" id="cc-summary-prime"></div><div id="chart-cc-yield-prime" class="chart-tall"></div></div>
-<details class="card full-width cc-legend" open>
+<div class="card cox-card full-width" id="cc-card-cox"><div class="card-header"><div class="card-title">Yield Semanal - Cox &middot; Gr&aacute;fico P</div></div><div class="cc-summary" id="cc-summary-cox"></div><div id="chart-cc-yield-cox" class="chart-tall"></div></div>
+<details class="cc-branch cox" id="cc-branch-cox" open ontoggle="if(this.open)ccResizeFamilies('cox')"><summary><span class="cc-branch-title">&#8627; Yield por familia &middot; Cox</span><span class="cc-branch-sub">cada familia = un Part Name, con su propio gr&aacute;fico P</span><span class="cc-counts" id="cc-fam-counts-cox"></span><button class="cc-filter-btn" id="cc-fam-filter-cox" onclick="event.preventDefault();event.stopPropagation();ccToggleAtt('cox')">Solo atenci&oacute;n</button></summary><div class="cc-detail" id="cc-detail-cox" style="display:none"><div class="cc-detail-head"><div class="cc-detail-title" id="cc-detail-title-cox"></div><button class="cc-close" onclick="ccCloseFamily('cox')" title="Cerrar">&#10005;</button></div><div class="cc-summary" id="cc-detail-sum-cox"></div><div id="chart-cc-fam-cox" class="chart-medium"></div></div><div class="cc-fam-grid" id="cc-fam-grid-cox"></div></details>
+<div class="card prime-card full-width" id="cc-card-prime"><div class="card-header"><div class="card-title">Yield Semanal - Prime &middot; Gr&aacute;fico P</div></div><div class="cc-summary" id="cc-summary-prime"></div><div id="chart-cc-yield-prime" class="chart-tall"></div></div>
+<details class="cc-branch prime" id="cc-branch-prime" open ontoggle="if(this.open)ccResizeFamilies('prime')"><summary><span class="cc-branch-title">&#8627; Yield por familia &middot; Prime</span><span class="cc-branch-sub">cada familia = un Part Name, con su propio gr&aacute;fico P</span><span class="cc-counts" id="cc-fam-counts-prime"></span><button class="cc-filter-btn" id="cc-fam-filter-prime" onclick="event.preventDefault();event.stopPropagation();ccToggleAtt('prime')">Solo atenci&oacute;n</button></summary><div class="cc-detail" id="cc-detail-prime" style="display:none"><div class="cc-detail-head"><div class="cc-detail-title" id="cc-detail-title-prime"></div><button class="cc-close" onclick="ccCloseFamily('prime')" title="Cerrar">&#10005;</button></div><div class="cc-summary" id="cc-detail-sum-prime"></div><div id="chart-cc-fam-prime" class="chart-medium"></div></div><div class="cc-fam-grid" id="cc-fam-grid-prime"></div></details>
+<details class="card full-width cc-legend" id="cc-legend" open>
 <summary>&#128216; Leyenda: Gr&aacute;fico P (proporci&oacute;n de defectuosos) aplicado al Yield Semanal</summary>
 <div class="cc-legend-grid">
 <div>
@@ -569,6 +609,7 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 </ul>
 <div class="tip"><strong>Consideraciones:</strong> los l&iacute;mites se calculan con las semanas del <em>Rango de Semanas</em> del panel lateral, as&iacute; que cambian al mover el rango. Se recomiendan 20 semanas o m&aacute;s de un periodo estable; con menos, los l&iacute;mites son preliminares. Prime excluye los part names no finalizados, igual que su Yield. Con vol&uacute;menes muy altos el gr&aacute;fico P puede dar m&aacute;s se&ntilde;ales de las reales (variaci&oacute;n entre semanas mayor a la esperada); en ese caso se usa la variante Laney P&prime;.</div>
 </div>
+<div style="grid-column:1/-1;border-top:1px solid var(--border);padding-top:12px"><h4>&#127795; Gr&aacute;ficos por familia (Part Name)</h4><p>Debajo de cada gr&aacute;fico global hay una <strong>rama</strong> con un mini gr&aacute;fico P por familia. Primero lee el global; si hay se&ntilde;al, baja a las familias para ver <em>cu&aacute;l</em> la causa. Cada familia tiene su <strong>propia CL y l&iacute;mites</strong>, calculados solo con sus semanas, as&iacute; que no se contamina con el mix de productos. Haz clic en una tarjeta para ampliarla.</p><ul><li><span class="cc-chip att">Atenci&oacute;n</span> la familia tuvo una se&ntilde;al (Regla 1 o 2) en las <strong>&uacute;ltimas 4 semanas</strong> del rango. Son las primeras en la lista.</li><li><span class="cc-chip prev">Se&ntilde;ales previas</span> tuvo se&ntilde;ales antes, pero ninguna reciente.</li><li><span class="cc-chip ok">En control</span> sin se&ntilde;ales en el rango.</li><li><span class="cc-chip low">Pocos datos</span> menos de 8 semanas con producci&oacute;n: los l&iacute;mites son preliminares, tomarlos con cautela.</li></ul><div class="tip">Si el global da se&ntilde;al y ninguna familia la muestra, suele ser un cambio de mezcla de productos y no del proceso. Si una familia concentra las se&ntilde;ales, ah&iacute; est&aacute; el foco.</div></div>
 </div>
 </details>
 </div>
@@ -1190,20 +1231,16 @@ function renderTop5Tables(){['cox','prime'].forEach(company=>{const pr=PROD_DATA
 function toggleDefChart(company,mode){defChartMode[company]=mode;document.getElementById(company+'-def-btn-bar').classList.toggle('active',mode==='bar');document.getElementById(company+'-def-btn-trend').classList.toggle('active',mode==='trend');document.getElementById(company+'-def-view-bar').classList.toggle('active',mode==='bar');document.getElementById(company+'-def-view-trend').classList.toggle('active',mode==='trend');if(mode==='trend')updateDefectTrend(company);}
 function updateDefectTrend(company){const cc=chartColors[company];const pn=getVal(company+'-2-pname');const num=getVal(company+'-2-pnum');const op=getVal(company+'-2-op');let rows=filterByRange(DATA[company]).filter(r=>(pn==='all'||r['Part Name']===pn)&&(num==='all'||r['Part Number']===num)&&matchesOperator(r.Operario,op));const defTotals={};rows.forEach(r=>{if(!isUnknown(r.Defecto))defTotals[r.Defecto]=(defTotals[r.Defecto]||0)+r['Cantidad Defectos'];});const top5Defs=Object.entries(defTotals).sort((a,b)=>b[1]-a[1]).slice(0,5).map(e=>e[0]);const defWeekData={};rows.forEach(r=>{if(top5Defs.includes(r.Defecto)){if(!defWeekData[r.Defecto])defWeekData[r.Defecto]={};const ss=r.SemanaSortable;defWeekData[r.Defecto][ss]=(defWeekData[r.Defecto][ss]||0)+r['Cantidad Defectos'];}});const allWeeks=new Set();rows.forEach(r=>allWeeks.add(r.SemanaSortable));const weeksSorted=[...allWeeks].sort((a,b)=>a-b);const traces=top5Defs.map((def,idx)=>{const wd=defWeekData[def]||{};const yData=weeksSorted.map(ss=>wd[ss]||0);return{type:'scatter',mode:'lines+markers+text',name:def,x:weeksSorted.map((_,i)=>i),y:yData,text:yData.map(v=>v>0?String(v):''),textposition:'top center',textfont:{size:8,color:OP_TIME_COLORS[idx%OP_TIME_COLORS.length]},line:{color:OP_TIME_COLORS[idx%OP_TIME_COLORS.length],width:2},marker:{color:OP_TIME_COLORS[idx%OP_TIME_COLORS.length],size:5}};}); if(!traces.length)traces.push({type:'scatter',mode:'lines',name:'No Data',x:[0],y:[0]});Plotly.react('chart-'+company+'-def-trend',traces,{...layoutBase,xaxis:{tickmode:'array',tickvals:weeksSorted.map((_,i)=>i),ticktext:weeksSorted.map(ss=>weekLabel(ss)),tickangle:-45},yaxis:{title:'Cantidad'},showlegend:true,legend:{orientation:'h',y:-0.3,x:0.5,xanchor:'center',font:{size:9}},margin:{l:45,r:25,t:15,b:80}},{responsive:true});}
 // Control Charts Section Functions
-function updateControlCharts(){['cox','prime'].forEach(renderYieldPChart);}
-function renderYieldPChart(company){
-const cc=chartColors[company];
-const chartId='chart-cc-yield-'+company;
-const sumEl=document.getElementById('cc-summary-'+company);
-const rows=filterForYield(filterByRange(PROD_DATA[company]),company);
+const ccSel={cox:null,prime:null};const ccOnlyAtt={cox:false,prime:false};const ccFam={cox:[],prime:[]};
+function ccEsc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function ccGo(id){const e=document.getElementById(id);if(e&&e.scrollIntoView)e.scrollIntoView({behavior:'smooth',block:'start'});}
+function updateControlCharts(){['cox','prime'].forEach(co=>{renderYieldPChart(co);renderFamilyCharts(co);});}
+// Calcula gráfico P (yield) para un conjunto de filas de producción. Devuelve null si hay menos de 2 semanas con producción.
+function ccCompute(rows){
 const byW={};
 rows.forEach(r=>{const ss=r.SemanaSortable;if(!ss)return;if(!byW[ss])byW[ss]={n:0,d:0};byW[ss].n+=r.TotalQty||0;byW[ss].d+=r.QTYDef||0;});
 const weeks=Object.keys(byW).map(Number).filter(ss=>byW[ss].n>0).sort((a,b)=>a-b);
-if(weeks.length<2){
-sumEl.innerHTML='<div class="cc-note">Datos insuficientes: se necesitan al menos 2 semanas con producción en el rango seleccionado.</div>';
-Plotly.react(chartId,[],{...layoutBase,annotations:[{x:0.5,y:0.5,xref:'paper',yref:'paper',text:'Sin datos',showarrow:false,font:{size:14,color:'#94a3b8'}}]},{responsive:true});
-return;
-}
+if(weeks.length<2)return null;
 let totN=0,totD=0;
 weeks.forEach(ss=>{totN+=byW[ss].n;totD+=Math.min(byW[ss].d,byW[ss].n);});
 const pbar=totD/totN;
@@ -1223,28 +1260,114 @@ while(j+1<pts.length&&pts[j+1].side===pts[i].side)j++;
 if(j-i+1>=8){for(let k=i;k<=j;k++)pts[k].r2=true;}
 i=j+1;
 }
-const k=pts.length;
+return{pts:pts,cl:cl,totN:totN,k:pts.length,n1:pts.filter(p=>p.r1).length,n2:pts.filter(p=>p.r2).length};
+}
+function ccStatusTxt(p){return(p.r1&&p.r2)?'Regla 1 + Regla 2':(p.r1?'Fuera de límites (Regla 1)':(p.r2?'Corrida de 8+ (Regla 2)':'En control'));}
+function ccTraces(c,color,mini){
+const pts=c.pts,k=c.k;
 const xs=pts.map((_,idx)=>idx);
-const labels=pts.map(p=>weekLabel(p.ss));
-const status=p=>(p.r1&&p.r2)?'Regla 1 + Regla 2':(p.r1?'Fuera de límites (Regla 1)':(p.r2?'Corrida de 8+ (Regla 2)':'En control'));
 const sig=p=>p.r1||p.r2;
-const cols=pts.map(p=>p.r1?'#ef4444':(p.r2?'#f59e0b':cc.primary));
-const traces=[
-{type:'scatter',mode:'lines',name:'UCL (+3σ)',x:xs,y:pts.map(p=>p.ucl),line:{color:'#ef4444',width:1.5,dash:'dash',shape:'hvh'},hoverinfo:'skip'},
-{type:'scatter',mode:'lines',name:'LCL (−3σ)',x:xs,y:pts.map(p=>p.lcl),line:{color:'#ef4444',width:1.5,dash:'dash',shape:'hvh'},hoverinfo:'skip'},
-{type:'scatter',mode:'lines',name:'CL (promedio)',x:[-0.5,k-0.5],y:[cl,cl],line:{color:'#10b981',width:2},hoverinfo:'skip'},
-{type:'scatter',mode:'lines+markers+text',name:'Yield semanal',x:xs,y:pts.map(p=>p.y),text:pts.map(p=>sig(p)?p.y.toFixed(1)+'%':''),textposition:'top center',textfont:{size:9,color:'#475569'},line:{color:cc.primary,width:1.5},marker:{color:cols,size:pts.map(p=>sig(p)?11:7),symbol:pts.map(p=>sig(p)?'diamond':'circle'),line:{color:'#fff',width:1}},customdata:pts.map(p=>[weekLabel(p.ss),p.n,p.d,p.ucl,p.lcl,status(p)]),hovertemplate:'<b>%{customdata[0]}</b><br>Yield: %{y:.2f}%<br>Producido: %{customdata[1]}<br>Defectuosos: %{customdata[2]}<br>UCL: %{customdata[3]:.2f}%  |  LCL: %{customdata[4]:.2f}%<br>%{customdata[5]}<extra></extra>'}
+const cols=pts.map(p=>p.r1?'#ef4444':(p.r2?'#f59e0b':color));
+const lw=mini?1:1.5;
+return[
+{type:'scatter',mode:'lines',name:'UCL (+3σ)',x:xs,y:pts.map(p=>p.ucl),line:{color:'#ef4444',width:lw,dash:'dash',shape:'hvh'},hoverinfo:'skip'},
+{type:'scatter',mode:'lines',name:'LCL (−3σ)',x:xs,y:pts.map(p=>p.lcl),line:{color:'#ef4444',width:lw,dash:'dash',shape:'hvh'},hoverinfo:'skip'},
+{type:'scatter',mode:'lines',name:'CL (promedio)',x:[-0.5,k-0.5],y:[c.cl,c.cl],line:{color:'#10b981',width:mini?1.5:2},hoverinfo:'skip'},
+{type:'scatter',mode:mini?'lines+markers':'lines+markers+text',name:'Yield semanal',x:xs,y:pts.map(p=>p.y),text:mini?undefined:pts.map(p=>sig(p)?p.y.toFixed(1)+'%':''),textposition:'top center',textfont:{size:9,color:'#475569'},line:{color:color,width:lw},marker:{color:cols,size:pts.map(p=>sig(p)?(mini?8:11):(mini?4:7)),symbol:pts.map(p=>sig(p)?'diamond':'circle'),line:{color:'#fff',width:1}},customdata:pts.map(p=>[weekLabel(p.ss),p.n,p.d,p.ucl,p.lcl,ccStatusTxt(p)]),hovertemplate:'<b>%{customdata[0]}</b><br>Yield: %{y:.2f}%<br>Producido: %{customdata[1]}<br>Defectuosos: %{customdata[2]}<br>UCL: %{customdata[3]:.2f}%  |  LCL: %{customdata[4]:.2f}%<br>%{customdata[5]}<extra></extra>'}
 ];
-let lo=Math.min(...pts.map(p=>p.y));
-const nearL=pts.map(p=>p.lcl).filter(v=>v>=lo-10);
+}
+function ccYRange(c){
+let lo=Math.min(...c.pts.map(p=>p.y));
+const nearL=c.pts.map(p=>p.lcl).filter(v=>v>=lo-10);
 if(nearL.length)lo=Math.min(lo,...nearL);
-lo=Math.max(0,Math.floor(lo-2));
-Plotly.react(chartId,traces,{...layoutBase,margin:{l:50,r:25,t:35,b:70},xaxis:{tickmode:'array',tickvals:xs,ticktext:labels,tickangle:-45,range:[-0.5,k-0.5]},yaxis:{range:[lo,101],title:'Yield (%)',ticksuffix:'%'},legend:{orientation:'h',x:0,y:1.13,font:{size:10}},hovermode:'closest'},{responsive:true});
-const n1=pts.filter(p=>p.r1).length;
-const n2=pts.filter(p=>p.r2).length;
+return Math.max(0,Math.floor(lo-2));
+}
+// Gráfico completo + resumen (usado por el global y por el detalle de familia)
+function ccDrawFull(rows,chartId,sumEl,color){
+const c=ccCompute(rows);
+if(!c){
+sumEl.innerHTML='<div class="cc-note">Datos insuficientes: se necesitan al menos 2 semanas con producción en el rango seleccionado.</div>';
+Plotly.react(chartId,[],{...layoutBase,annotations:[{x:0.5,y:0.5,xref:'paper',yref:'paper',text:'Sin datos',showarrow:false,font:{size:14,color:'#94a3b8'}}]},{responsive:true});
+return null;
+}
+const k=c.k,pts=c.pts,cl=c.cl;
+const labels=pts.map(p=>weekLabel(p.ss));
+const xs=pts.map((_,idx)=>idx);
+Plotly.react(chartId,ccTraces(c,color,false),{...layoutBase,margin:{l:50,r:25,t:35,b:70},xaxis:{tickmode:'array',tickvals:xs,ticktext:labels,tickangle:-45,range:[-0.5,k-0.5]},yaxis:{range:[ccYRange(c),101],title:'Yield (%)',ticksuffix:'%'},legend:{orientation:'h',x:0,y:1.13,font:{size:10}},hovermode:'closest'},{responsive:true});
 const last=pts[pts.length-1];
+const sig=p=>p.r1||p.r2;
 const pill=(l,v,bad)=>'<div class="cc-pill'+(bad?' bad':'')+'"><span class="lbl">'+l+'</span><span class="val">'+v+'</span></div>';
-sumEl.innerHTML=pill('Yield promedio (CL)',cl.toFixed(2)+'%',false)+pill('Semanas',k,false)+pill('Producido',totN.toLocaleString(),false)+pill('Regla 1 · fuera de límites',n1,n1>0)+pill('Regla 2 · puntos en corrida',n2,n2>0)+pill('Última semana ('+weekLabel(last.ss)+')',status(last),sig(last))+(k<20?'<div class="cc-note" style="flex-basis:100%;margin:0">⚠ Solo '+k+' semanas en el rango seleccionado: los límites de control son preliminares (se recomiendan 20 o más).</div>':'');
+sumEl.innerHTML=pill('Yield promedio (CL)',cl.toFixed(2)+'%',false)+pill('Semanas',k,false)+pill('Producido',c.totN.toLocaleString(),false)+pill('Regla 1 · fuera de límites',c.n1,c.n1>0)+pill('Regla 2 · puntos en corrida',c.n2,c.n2>0)+pill('Última semana ('+weekLabel(last.ss)+')',ccStatusTxt(last),sig(last))+(k<20?'<div class="cc-note" style="flex-basis:100%;margin:0">⚠ Solo '+k+' semanas en el rango seleccionado: los límites de control son preliminares (se recomiendan 20 o más).</div>':'');
+return c;
+}
+function renderYieldPChart(company){
+ccDrawFull(filterForYield(filterByRange(PROD_DATA[company]),company),'chart-cc-yield-'+company,document.getElementById('cc-summary-'+company),chartColors[company].primary);
+}
+// ---- Familias (Part Name) ----
+function ccStatus(c,recent){
+if(!c||c.k<8)return{key:'low',label:'Pocos datos'};
+if(c.pts.some(p=>recent[p.ss]&&(p.r1||p.r2)))return{key:'att',label:'Atención'};
+if(c.n1>0||c.n2>0)return{key:'prev',label:'Señales previas'};
+return{key:'ok',label:'En control'};
+}
+function ccFamRows(company,name){return filterForYield(filterByRange(PROD_DATA[company]),company).filter(r=>r['Part Name']===name);}
+function renderFamilyCharts(company){
+const grid=document.getElementById('cc-fam-grid-'+company);
+const allRows=filterForYield(filterByRange(PROD_DATA[company]),company);
+(ccFam[company]||[]).forEach(f=>{const el=document.getElementById('cc-fam-'+company+'-'+f.i);if(el&&Plotly.purge)Plotly.purge(el);});
+const wk=[...new Set(allRows.filter(r=>r.SemanaSortable).map(r=>r.SemanaSortable))].sort((a,b)=>a-b);
+const recent={};wk.slice(-4).forEach(w=>{recent[w]=true;});
+const byName={};
+allRows.forEach(r=>{const p=r['Part Name'];if(isUnknown(p))return;(byName[p]=byName[p]||[]).push(r);});
+const order={att:0,prev:1,ok:2,low:3};
+const fams=Object.keys(byName).map(name=>{const c=ccCompute(byName[name]);return{name:name,c:c,st:ccStatus(c,recent)};});
+fams.sort((a,b)=>(order[a.st.key]-order[b.st.key])||((a.c?a.c.cl:101)-(b.c?b.c.cl:101))||a.name.localeCompare(b.name));
+fams.forEach((f,i)=>{f.i=i;});
+ccFam[company]=fams;
+const cnt={att:0,prev:0,ok:0,low:0};fams.forEach(f=>{cnt[f.st.key]++;});
+document.getElementById('cc-fam-counts-'+company).innerHTML=(cnt.att?'<span class="cc-chip att">'+cnt.att+' atención</span>':'')+(cnt.prev?'<span class="cc-chip prev">'+cnt.prev+' señales previas</span>':'')+(cnt.ok?'<span class="cc-chip ok">'+cnt.ok+' en control</span>':'')+(cnt.low?'<span class="cc-chip low">'+cnt.low+' pocos datos</span>':'')+(fams.length?'':'<span class="cc-chip low">sin familias</span>');
+const fb=document.getElementById('cc-fam-filter-'+company);
+fb.className='cc-filter-btn'+(ccOnlyAtt[company]?' on':'');fb.innerHTML=ccOnlyAtt[company]?'Ver todas':'Solo atención';
+const shown=ccOnlyAtt[company]?fams.filter(f=>f.st.key==='att'):fams;
+if(!shown.length){grid.innerHTML='<div class="cc-fam-empty" style="grid-column:1/-1">'+(fams.length?'✓ Ninguna familia con señales en las últimas 4 semanas.':'No hay familias con producción en el rango seleccionado.')+'</div>';}
+else{
+grid.innerHTML=shown.map(f=>{
+const c=f.c;
+const meta=c?('CL '+c.cl.toFixed(1)+'% · '+c.k+' sem · '+(c.n1+c.n2)+' señal'+((c.n1+c.n2)===1?'':'es')+' · últ. '+weekLabel(c.pts[c.pts.length-1].ss)):'Menos de 2 semanas con producción';
+return'<div class="cc-fam st-'+f.st.key+(ccSel[company]===f.name?' sel':'')+'" onclick="ccOpenFamily(\''+company+'\','+f.i+')" title="Clic para ampliar"><div class="cc-fam-head"><span class="cc-fam-name">'+ccEsc(f.name)+'</span><span class="cc-chip '+f.st.key+'">'+f.st.label+'</span></div><div class="cc-fam-meta">'+meta+'</div>'+(c?'<div class="cc-fam-plot" id="cc-fam-'+company+'-'+f.i+'"></div>':'<div class="cc-fam-empty">Sin datos suficientes</div>')+'</div>';
+}).join('');
+const col=chartColors[company].primary;
+shown.forEach(f=>{
+if(!f.c)return;
+const c=f.c,k=c.k;
+Plotly.react('cc-fam-'+company+'-'+f.i,ccTraces(c,col,true),{...layoutBase,showlegend:false,margin:{l:36,r:8,t:6,b:20},xaxis:{tickmode:'array',tickvals:[0,k-1],ticktext:[weekLabel(c.pts[0].ss),weekLabel(c.pts[k-1].ss)],tickfont:{size:8},range:[-0.5,k-0.5],fixedrange:true},yaxis:{range:[ccYRange(c),101],nticks:3,ticksuffix:'%',tickfont:{size:8},fixedrange:true},hovermode:'closest'},{responsive:true,displayModeBar:false});
+});
+}
+if(ccSel[company]){const f=fams.find(x=>x.name===ccSel[company]);if(f)ccDrawDetail(company,f);else ccCloseFamily(company);}
+}
+function ccDrawDetail(company,f){
+const box=document.getElementById('cc-detail-'+company);
+box.style.display='';
+document.getElementById('cc-detail-title-'+company).innerHTML=ccEsc(f.name)+' &nbsp;<span class="cc-chip '+f.st.key+'">'+f.st.label+'</span>';
+ccDrawFull(ccFamRows(company,f.name),'chart-cc-fam-'+company,document.getElementById('cc-detail-sum-'+company),chartColors[company].primary);
+}
+function ccOpenFamily(company,i){
+const f=ccFam[company][i];if(!f)return;
+ccSel[company]=f.name;
+ccDrawDetail(company,f);
+document.querySelectorAll('#cc-fam-grid-'+company+' .cc-fam').forEach(e=>e.classList.remove('sel'));
+const card=document.getElementById('cc-fam-'+company+'-'+i);
+if(card&&card.parentNode&&card.parentNode.classList)card.parentNode.classList.add('sel');
+ccGo('cc-detail-'+company);
+}
+function ccCloseFamily(company){
+ccSel[company]=null;
+document.getElementById('cc-detail-'+company).style.display='none';
+document.querySelectorAll('#cc-fam-grid-'+company+' .cc-fam').forEach(e=>e.classList.remove('sel'));
+}
+function ccToggleAtt(company){ccOnlyAtt[company]=!ccOnlyAtt[company];renderFamilyCharts(company);}
+function ccResizeFamilies(company){
+(ccFam[company]||[]).forEach(f=>{const el=document.getElementById('cc-fam-'+company+'-'+f.i);if(el&&Plotly.Plots)Plotly.Plots.resize(el);});
 }
 
 document.addEventListener('DOMContentLoaded',function(){initFilters();initRangeSlider();updateAll();});
